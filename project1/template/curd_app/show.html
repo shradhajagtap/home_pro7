@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block title %}
+    <title>Show Information</title>
+{% endblock %}
+{% block content %}
+            <table class="table table-success table-striped m-auto col-6 w-50 mt-3">
+                <h2 class="text-dark text-center mb-3"> Total Employee List </h2>
+                <thead>
+                    <tr>
+                        <th> Employee ID </th>
+                        <th> Employee Name </th>
+                        <th> Employee Location </th>
+                        <th> Employee Salary </th>
+                        <th> Work Time </th>
+                        <th colspan="2" class="text-center"> Action </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for employee in obj %}
+                        <tr>
+                            <td>{{ employee.employee_id }} </td>
+                            <td>{{ employee.employee_name }} </td>
+                            <td>{{ employee.employee_location_mode }} </td>
+                            <td>{{ employee.employee_salary_mode }} </td>
+                            <td>{{ employee.working_time }} </td>
+
+                            <td>
+                                <a href="{% url 'update_url' employee.id %}">
+                                    <button class="btn btn-light col-12"><i class="bi bi-vector-pen"></i> &nbsp Update </button>
+                                </a>
+                            </td>
+                            <td>
+                                <a href="{% url 'delete_url' employee.id %}">
+                                    <button class="btn btn-danger col-12"><i class="bi bi-trash"></i> &nbsp Delete </button>
+                                </a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+{% endblock %}
